@@ -5,6 +5,7 @@ import {
   Route,
   Link,
   useHistory,
+  Redirect,
 } from "react-router-dom";
 import ImageGallery from "./pages/ImageGallery";
 import Login from "./pages/Login";
@@ -65,7 +66,7 @@ export default function App() {
           <Home />
         </Route>
         <Route path="/images/:topic">
-          {authenticated ? <ImageGallery /> : <h1>NOPE!</h1>}
+          {authenticated ? <ImageGallery /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
           {/* passing props: authenticated, setAuthenticated */}
