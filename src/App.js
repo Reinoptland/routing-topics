@@ -51,12 +51,25 @@ export default function App() {
               </li>
             </>
           )}
+          <li>
+            {authenticated && (
+              <>
+                <input
+                  value={searchText}
+                  onChange={(event) => setSearchText(event.target.value)}
+                />
+                <button onClick={search} disabled={!authenticated}>
+                  🔍
+                </button>
+              </>
+            )}
+            {!authenticated && (
+              <p>
+                Please <Link to="/login">log in</Link> to search for images
+              </p>
+            )}
+          </li>
         </ul>
-        <input
-          value={searchText}
-          onChange={(event) => setSearchText(event.target.value)}
-        />
-        <button onClick={search}>🔍</button>
       </nav>
 
       {/* A <Switch> looks through its children <Route>s and
@@ -70,10 +83,14 @@ export default function App() {
         </Route>
         <Route path="/login">
           {/* passing props: authenticated, setAuthenticated */}
-          <Login
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
+          {authenticated ? (
+            <Redirect to="/" />
+          ) : (
+            <Login
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          )}
         </Route>
         <Route path="/">
           <h1>404 not found, sorry</h1>
