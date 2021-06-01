@@ -45,6 +45,9 @@ export default function App() {
               <li>
                 <Link to="/images/cheese">Cheese</Link>
               </li>
+              <li>
+                <button onClick={() => setAuthenticated(false)}>logout</button>
+              </li>
             </>
           )}
         </ul>
@@ -62,7 +65,7 @@ export default function App() {
           <Home />
         </Route>
         <Route path="/images/:topic">
-          <ImageGallery />
+          {authenticated ? <ImageGallery /> : <h1>NOPE!</h1>}
         </Route>
         <Route path="/login">
           {/* passing props: authenticated, setAuthenticated */}
