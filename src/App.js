@@ -11,7 +11,8 @@ import Login from "./pages/Login";
 
 export default function App() {
   const history = useHistory();
-  console.log("WHAT IS HISTORY:", history);
+  const [authenticated, setAuthenticated] = useState(false);
+  // console.log("WHAT IS HISTORY:", history);
   const [searchText, setSearchText] = useState("");
 
   function search() {
@@ -57,7 +58,11 @@ export default function App() {
           <ImageGallery />
         </Route>
         <Route path="/login">
-          <Login />
+          {/* passing props: authenticated, setAuthenticated */}
+          <Login
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
         </Route>
         <Route path="/">
           <h1>404 not found, sorry</h1>

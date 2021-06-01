@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 
-export default function Login() {
+export default function Login(props) {
+  console.log("WHAT IS IN PROPS:", props);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [authenticated, setAuthenticated] = useState(false);
 
   function handleSubmit() {
     // send to server here
     if (email === "rein@rein.it" && password === "abcd1234") {
       console.log("INGELOGD!");
-      setAuthenticated(true);
+      props.setAuthenticated(true);
     } else {
       console.log("Helaas");
     }
   }
 
-  console.log("INGELOGD??", authenticated);
+  console.log("INGELOGD??", props.authenticated);
 
   return (
     <div>
