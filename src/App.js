@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 import ImageGallery from "./pages/ImageGallery";
 
 export default function App() {
@@ -23,6 +29,12 @@ export default function App() {
             <li>
               <Link to="/images">Images</Link>
             </li>
+            <li>
+              <Link to="/users/rein">Rein</Link>
+            </li>
+            <li>
+              <Link to="/users/mjackson">MJ</Link>
+            </li>
           </ul>
         </nav>
 
@@ -41,7 +53,7 @@ export default function App() {
           <Route path="/about/team">
             <Team />
           </Route>
-          <Route path="/users/mjackson">
+          {/* <Route path="/users/mjackson">
             <Profile />
           </Route>
           <Route path="/users/reinoptland">
@@ -49,6 +61,9 @@ export default function App() {
           </Route>
           <Route path="/users/levi">
             <Profile3 />
+          </Route> */}
+          <Route path="/users/:username/repositories/:repositoryname">
+            <Profile />
           </Route>
           <Route path="/users">
             <Users />
@@ -63,14 +78,20 @@ export default function App() {
 }
 
 function Profile() {
-  return <h2>Micheal Jackson</h2>;
+  const params = useParams();
+
+  // nu hebben gebruikersnaam
+  // -> haal het profiel op van de server
+  // axios.get(`github.com/api/users/${params.username}`)
+  console.log("WAT ZIT HIER IN!", params);
+  return <h2>{params.username}</h2>;
 }
-function Profile2() {
-  return <h2>Rein Op 't Land</h2>;
-}
-function Profile3() {
-  return <h2>Levi</h2>;
-}
+// function Profile2() {
+//   return <h2>Rein Op 't Land</h2>;
+// }
+// function Profile3() {
+//   return <h2>Levi</h2>;
+// }
 
 function Home() {
   return <h2>Home</h2>;
