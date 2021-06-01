@@ -7,6 +7,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import ImageGallery from "./pages/ImageGallery";
+import Login from "./pages/Login";
 
 export default function App() {
   const history = useHistory();
@@ -15,9 +16,7 @@ export default function App() {
 
   function search() {
     console.log("WAT HEEFT DE PERSOON INGEVULD?", searchText);
-
     // we gaan de gebuiker doorsturen naar:
-
     // /images/searchText
     history.push(`/images/${searchText}`);
   }
@@ -27,6 +26,9 @@ export default function App() {
         <ul>
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
           </li>
           <li>
             <Link to="/images/dogs">Dogs</Link>
@@ -53,6 +55,9 @@ export default function App() {
         </Route>
         <Route path="/images/:topic">
           <ImageGallery />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/">
           <h1>404 not found, sorry</h1>
