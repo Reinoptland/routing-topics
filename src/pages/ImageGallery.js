@@ -8,7 +8,11 @@ export default function ImageGallery() {
   // use Params
   return (
     <div>
-      <img src={`https://source.unsplash.com/1600x900/?${params.topic}`} />
+      <img
+        width="400px"
+        alt={params.topic}
+        src={`https://source.unsplash.com/1600x900/?${params.topic}`}
+      />
     </div>
   );
 }
