@@ -18,22 +18,13 @@ export default function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/images/dogs">Dogs</Link>
             </li>
             <li>
-              <Link to="/about/team">Team</Link>
+              <Link to="/images/love">Love</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/images">Images</Link>
-            </li>
-            <li>
-              <Link to="/users/rein">Rein</Link>
-            </li>
-            <li>
-              <Link to="/users/mjackson">MJ</Link>
+              <Link to="/images/cheese">Cheese</Link>
             </li>
           </ul>
         </nav>
@@ -44,29 +35,8 @@ export default function App() {
           <Route exact={true} path="/">
             <Home />
           </Route>
-          <Route path="/images">
+          <Route path="/images/:topic">
             <ImageGallery />
-          </Route>
-          <Route exact={true} path="/about">
-            <About />
-          </Route>
-          <Route path="/about/team">
-            <Team />
-          </Route>
-          {/* <Route path="/users/mjackson">
-            <Profile />
-          </Route>
-          <Route path="/users/reinoptland">
-            <Profile2 />
-          </Route>
-          <Route path="/users/levi">
-            <Profile3 />
-          </Route> */}
-          <Route path="/users/:username/repositories/:repositoryname">
-            <Profile />
-          </Route>
-          <Route path="/users">
-            <Users />
           </Route>
           <Route path="/">
             <h1>404 not found, sorry</h1>
@@ -77,34 +47,6 @@ export default function App() {
   );
 }
 
-function Profile() {
-  const params = useParams();
-
-  // nu hebben gebruikersnaam
-  // -> haal het profiel op van de server
-  // axios.get(`github.com/api/users/${params.username}`)
-  console.log("WAT ZIT HIER IN!", params);
-  return <h2>{params.username}</h2>;
-}
-// function Profile2() {
-//   return <h2>Rein Op 't Land</h2>;
-// }
-// function Profile3() {
-//   return <h2>Levi</h2>;
-// }
-
 function Home() {
   return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
-
-function Team() {
-  return <h2>Team</h2>;
 }
