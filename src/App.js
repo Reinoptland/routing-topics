@@ -28,18 +28,25 @@ export default function App() {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/images/dogs">Dogs</Link>
-          </li>
-          <li>
-            <Link to="/images/love">Love</Link>
-          </li>
-          <li>
-            <Link to="/images/cheese">Cheese</Link>
-          </li>
+          {!authenticated && (
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          )}
+          {authenticated && (
+            <>
+              <li>
+                <Link to="/images/dogs">Dogs</Link>
+              </li>
+
+              <li>
+                <Link to="/images/love">Love</Link>
+              </li>
+              <li>
+                <Link to="/images/cheese">Cheese</Link>
+              </li>
+            </>
+          )}
         </ul>
         <input
           value={searchText}
